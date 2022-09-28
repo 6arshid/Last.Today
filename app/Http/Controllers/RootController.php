@@ -17,44 +17,44 @@ class RootController extends Controller
 
     public function welcome(){
 
-        // if(empty(str_contains(Request::url(), '127.0.0.1:8000')) &&  empty(str_contains(Request::url(), '127.0.0.1:8001')) &&  empty(str_contains(Request::url(), 'last.today'))){
-        //     $domain = Request::url();
+        if(empty(str_contains(Request::url(), '127.0.0.1:8000')) &&  empty(str_contains(Request::url(), '127.0.0.1:8001')) &&  empty(str_contains(Request::url(), 'last.today'))){
+            $domain = Request::url();
 
-        //     $remove = array("http://", "https://", "wwww.");
-        //     $clean_domain = str_replace($remove,null,$domain);
-           
-        //     $domain_finder = DB::table("users")->where('domain',$clean_domain)->first();
+            $remove = array("http://", "https://", "wwww.");
+            $clean_domain = str_replace($remove,null,$domain);
+      
+            $domain_finder = DB::table("users")->where('domain',$clean_domain)->first();
 
             
-        //     $username = $domain_finder->username;
-        //     Session::put('username', $username);
+            $username = $domain_finder->username;
+            Session::put('username', $username);
 
-        //     $user = DB::table("users")->where('username',$username)->first();
-        //     $results = DB::table("articles")->where('article_user_id',$user->id)->orderBy('article_id', "DESC")->paginate(5);
+            $user = DB::table("users")->where('username',$username)->first();
+            $results = DB::table("articles")->where('article_user_id',$user->id)->orderBy('article_id', "DESC")->paginate(5);
       
-        //     if(isset($user)){
-        //         $follow_checker = Helper::user_follow_unfollow_checker($username);
-        //         return Inertia::render('LT/Profile',[
-        //            'user' =>  $user,
-        //            'follow_checker' => $follow_checker,
-        //            'avatar' => '/storage/'.$user->profile_photo_path,
-        //            'articles' =>  Article::where('article_user_id',$user->id)->orderBy('article_id', "DESC")->distinct()->paginate(30)->map(function($article){
-        //                return [
-        //                    'id' => $article->article_id,
-        //                    'title' => $article->article_title,
-        //                    'content' => $article->article_content,
-        //                    'slug' => $article->article_slug,
-        //                    'image' => Helper::file_checker($article->article_id,'blog')
-        //                 ];
-        //            })
-        //         ]);
+            if(isset($user)){
+                $follow_checker = Helper::user_follow_unfollow_checker($username);
+                return Inertia::render('LT/Profile',[
+                   'user' =>  $user,
+                   'follow_checker' => $follow_checker,
+                   'avatar' => '/storage/'.$user->profile_photo_path,
+                   'articles' =>  Article::where('article_user_id',$user->id)->orderBy('article_id', "DESC")->distinct()->paginate(30)->map(function($article){
+                       return [
+                           'id' => $article->article_id,
+                           'title' => $article->article_title,
+                           'content' => $article->article_content,
+                           'slug' => $article->article_slug,
+                           'image' => Helper::file_checker($article->article_id,'blog')
+                        ];
+                   })
+                ]);
                
-        //     }else{
-        //         return redirect()->to('/')->with('message', 'We do not have such a user');
+            }else{
+                return redirect()->to('/')->with('message', 'We do not have such a user');
 
-        //     }
-        // }
-        // else{
+            }
+        }
+        else{
 
             // $get_total_views = DB::table('settings')->first();
             // $total_views = $get_total_views->settings_total_view;
@@ -102,7 +102,7 @@ class RootController extends Controller
             })
           
         ]);
-        // }
+        }
        
      }
     public function menu(){
@@ -116,6 +116,7 @@ class RootController extends Controller
             'username' => $username
         ]);
     }
+    
    public function users(){
     $userpaginate = User::orderBy('id','DESC')->paginate(30);
       return Inertia::render('LT/Users',[
@@ -134,11 +135,17 @@ class RootController extends Controller
    
 
    public function showprofile($username){
+        if($username == 'vpn'){
+            return Inertia::render('VPN');
+            die;
+        }
+
       $user = User::where('username',$username)->first();
       if($user == null){
         // return redirect()->to('/')->with('message', 'We do not have such a user');
         return redirect()->to('/');
-    }else{
+      }
+    else{
          $follow_checker = Helper::user_follow_unfollow_checker("$username");
          $user_id_for_shop = Helper::find_user_by_username("$username")->id;
          $shop_checker_1 = DB::table('products')->where('product_owner_id',$user_id_for_shop)->first();

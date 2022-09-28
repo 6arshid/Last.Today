@@ -132,6 +132,12 @@ username:String
                                 <h4 class="text-gray-800 dark:text-gray-50 dark:text-slate-200">Notifications</h4>
                                 </Link>
                             </div>  
+                            <div>
+                                <Link :href="`/vpn`">
+                                <img src="/files/icons/icons8-vpn-60.png" class="mx-auto d-block zoom">
+                                <h4 class="text-gray-800 dark:text-gray-50 dark:text-slate-200">Free VPN</h4>
+                                </Link>
+                            </div>
 
                             <element v-if="$page.props.user">
                                 <Link :href="`/${username}`">

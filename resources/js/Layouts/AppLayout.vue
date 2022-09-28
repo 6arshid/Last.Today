@@ -165,11 +165,7 @@ const logout = () => {
                             <img src="/files/icons/icons8-online-shop-48.png" class="zoomappindex"/>
                             </Link>
                         </li>
-                        <li>
-                            <Link :href="route('notes')" :active="route().current('notes')" >
-                            <img src="/files/icons/icons8-note-48.png" class="zoomappindex"/>
-                            </Link>
-                        </li>
+                       
                         <li>
                       <Link :href="route('users')" :active="route().current('users')">
 
@@ -177,19 +173,21 @@ const logout = () => {
                         </Link>
                     
                         </li>
-
+                        <li>
+                                <Link :href="`/vpn`">
+                                <img src="/files/icons/icons8-vpn-60.png" height="40"  class="zoomappindex">
+                                </Link>
+                            </li>
                         <li>
                             <Link :href="route('notifications')" :active="route().current('notifications')">
 
-                    <img src="/assets/img/icons8-notification-48.png" height="40">
+                    <img src="/assets/img/icons8-notification-48.png" height="40"  class="zoomappindex">
                     
                 </Link>
                         </li>
-                        <li>
-                           <Link :href="route('information')" :active="route().current('information')"  class="nav-link icon pointer">
-                            <img src="/files/icons/icons8-info-48.png" class="zoomappindex"/>
-                            </Link>
-                        </li>
+                  
+
+                       
                         <!-- <li>
    <button class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" data-modal-toggle="authentication-modal">
     Toggle login modal

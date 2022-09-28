@@ -229,8 +229,8 @@ class UserController extends Controller
     public function sendcommentforarticle($id){
 
     $validator = Validator::make(Request::all(), [
-        'contentcomment' => 'nullable|ax:999|string',
-        'comment_id' => 'nullable|ax:999|string'
+        'contentcomment' => 'nullable|max:9999|string',
+        'comment_id' => 'nullable|max:999|string'
    ]);
     $errors = $validator->errors();
     foreach ($errors->all() as $message) {

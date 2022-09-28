@@ -451,7 +451,7 @@ class Helper
 	// public static function save_remote_image($url,$data='',$ref_url='',$login=false,$proxy=false,$proxystatus=false){
 	public static function make_avatar($email){
 		// $url = "https://last.today/logo.png";
-		$url = 'https://api.multiavatar.com/'.$email.'.png';
+		$url = 'https://ui-avatars.com/api/?name='.$email.'&color=7F9CF5&background=EBF4FF';
 		$content = Helper::curl_page("$url");
 		// $path = 'https://api.multiavatar.com/'.uniqid().'.png';
 		$filename = "Multiavatar_".uniqid().".png";

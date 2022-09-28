@@ -17,7 +17,7 @@ const form = useForm({
 <template>
     <AppLayout title="Add Note">
 
-        <div class="md:w-11/12 w-11/12 mx-auto mb-4">
+        <div class="md:w-6/12 w-11/12 mx-auto mb-4">
            <div class="d-flex justify-content-between align-items-center pt-5 mb-5">
                     <h1>
                         Add Note
@@ -28,8 +28,7 @@ const form = useForm({
                 </div>
 
 
-                    <div class="grid grid-cols-11 gap-4">
-  <div class="col-start-5 col-span-3">
+      
     <form @submit.prevent="submit">
   <div>
  <textarea class="w-full mt-5 mb-5 description bg-gray-100 sec p-3 h-60 border border-gray-300 outline-none" v-model="form.content" placeholder="Enter Text"></textarea>
@@ -49,31 +48,31 @@ const form = useForm({
   </div>
                                   <div class="d-flex justify-content-start align-items-center mb-3">
                                     <h6 class="me-3">Note Background</h6>
-                                    <div class="color-switcher">
-                                        <div class="d-flex justify-content-start">
+                                    <div class="color-switcher flex">
+                                        <div class=" flex justify-content-start">
                                             <div class="setxo-white">
                                                 <input class="form-check-input" value="#fff" type="radio" v-model="form.color"
-                                                       id="setxo-white" checked="">
+                                                       id="setxo-white" checked=""> White
                                             </div>
                                             <div class="setxo-pink">
                                                 <input class="form-check-input" value="#f4ade3" type="radio" v-model="form.color"
-                                                       id="setxo-pink">
+                                                       id="setxo-pink"> Pink
                                             </div>
                                             <div class="setxo-yellow">
                                                 <input class="form-check-input" value="#ffd8c0" type="radio" v-model="form.color"
-                                                       id="setxo-grey">
+                                                       id="setxo-grey"> Grey
                                             </div>
                                             <div class="setxo-blue">
                                                 <input class="form-check-input" value="#a4e3f9" type="radio" v-model="form.color"
-                                                       id="setxo-blue">
+                                                       id="setxo-blue"> Blue
                                             </div>
                                             <div class="setxo-purple">
                                                 <input class="form-check-input" value="#e0bfff" type="radio" v-model="form.color"
-                                                       id="setxo-lightgreen">
+                                                       id="setxo-lightgreen"> Light Green
                                             </div>
                                             <div class="setxo-green">
                                                 <input class="form-check-input" value="#a1f5cf" type="radio" v-model="form.color"
-                                                       id="setxo-green">
+                                                       id="setxo-green"> Green
                                             </div>
                                         </div>
                                     </div>
@@ -90,9 +89,7 @@ const form = useForm({
         <button type="submit" class="mt-3 px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-green-600 bg-green-50 hover:text-green-800 hover:bg-green-100 active:bg-green-200 focus:ring-green-300 w-full">Submit</button>
 
     </form>
-  </div>
 
-</div>
 
 
 </div>
